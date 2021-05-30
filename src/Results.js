@@ -7,7 +7,7 @@ export default function Results(props) {
         return (
             <div className = "Results">
                 <div className = "row">
-                    <div className = "col-5" className ="WordSearched">
+                    <div className = "col-5">
                         <h1>{props.results.word}</h1>
                     </div>  
                     <div className = "col-2">
