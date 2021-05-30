@@ -32,14 +32,11 @@ export default function Dictionary () {
                     <form onSubmit = {search}>
                         <input 
                         type = "search" 
+                        text = "type a word then enter..."
                         autoFocus = {true} 
                         onChange = {handleKeywordChange}
                         />
-                        <button 
-                        type="button"
-                        className="btn btn-outline-secondary btn-sm">
-                            search
-                        </button>
+                        
                     </form>
                     <Results results = {results}/>
                 </div>
