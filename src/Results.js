@@ -10,7 +10,7 @@ export default function Results(props) {
                     
                     <div className = "WordSearched">
                     <div className = "row">
-                        <div className = "col-5">
+                        <div className = "col-2">
                             <h1>{props.results.word}</h1>
                         </div>
                         <div className = "col-1">
@@ -23,7 +23,7 @@ export default function Results(props) {
                     })}
                         <svg xmlns="http://www.w3.org/2000/svg" 
                         width="16"
-                        height="16"
+                        height="20"
                         fill="currentColor"
                         className="bi bi-play-circle-fill"
                             viewBox="0 0 16 16">

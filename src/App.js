@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
         <header className="App-header">
-            LEVY DICTIONARY
+            DICTIONARY
         </header>
         <div className = "container">
           <main>
