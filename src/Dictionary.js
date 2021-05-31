@@ -27,8 +27,8 @@ export default function Dictionary () {
 
     return (
         <div className = "Dictionary">
-            <div className = "row">
-                <div className = "col-7">
+            
+               
                     <form onSubmit = {search}>
                         <input 
                         type = "search" 
@@ -39,11 +39,8 @@ export default function Dictionary () {
                         
                     </form>
                     <Results results = {results}/>
-                </div>
-                <div className = "col-5">
-                    This columm will be the photos
-                </div>
-            </div>
+               
+            
         </div>
     );
 }
