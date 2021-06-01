@@ -10,10 +10,10 @@ export default function Results(props) {
                     
                     <div className = "WordSearched">
                     <div className = "row">
-                        <div className = "col-2">
+                        <div className = "col-3">
                             <h1>{props.results.word}</h1>
                         </div>
-                        <div className = "col-1">
+                        <div className = "col-3">
                         {props.results.phonetics.map(function(phonetic, index){
                         return (
                             <div key = {index}>

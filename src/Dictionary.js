@@ -4,10 +4,11 @@ import "./Dictionary.css";
 import Results from "./Results";
 import Photos from "./Photos";
 
-export default function Dictionary () {
-    let [keyword, setKeyword] = useState("")
-    let [results, setResults] = useState(null)
+export default function Dictionary(props) {
+    let [keyword, setKeyword] = useState(props.defaultKeyword);
+    let [results, setResults] = useState(null);
     let [photos, setPhotos] = useState(null);
+
 
     function handleDictionaryResponse(response) {
         console.log(response.data[0]);
@@ -18,6 +19,8 @@ export default function Dictionary () {
         console.log(response.data);
         setPhotos(response.data.photos);
     }
+
+   
 
     function search (event) {
         event.preventDefault();
@@ -38,17 +41,16 @@ export default function Dictionary () {
     }
     
 
-
     return (
         <div className = "Dictionary">
                
                     <form onSubmit = {search}>
-                        <input 
-                        type = "search" 
-                        text = "type a word then enter..."
-                        autoFocus = {true} 
-                        onChange = {handleKeywordChange}
-                        />
+                            <input 
+                            type = "search" 
+                            text = "type a word then enter..."
+                            autoFocus = {true} 
+                            onChange = {handleKeywordChange}
+                            />
                         
                     </form>
                     <Results results = {results}/>
@@ -56,4 +58,5 @@ export default function Dictionary () {
                     <Photos photos = {photos}/>
         </div>
     );
+
 }
