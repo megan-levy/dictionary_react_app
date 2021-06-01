@@ -8,6 +8,7 @@ export default function Dictionary(props) {
     let [keyword, setKeyword] = useState(props.defaultKeyword);
     let [results, setResults] = useState(null);
     let [photos, setPhotos] = useState(null);
+    let [loaded, setLoaded]=useState(false);
 
 
     function handleDictionaryResponse(response) {
@@ -20,11 +21,14 @@ export default function Dictionary(props) {
         setPhotos(response.data.photos);
     }
 
-   
+    function load() {
+        setLoaded(true);
+        search();
+       }
 
-    function search (event) {
-        event.preventDefault();
 
+    function search () {
+      
         let apiURL = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`
         axios.get(apiURL).then(handleDictionaryResponse);
 
@@ -32,24 +36,32 @@ export default function Dictionary(props) {
         let pexelsAPIUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=9`;
 
         let headers = {Authorization:`Bearer ${pexelsAPIKey}`};
-        axios.get(pexelsAPIUrl, {headers: headers}).then(handlePexelsResponse);
-
+        axios.get(pexelsAPIUrl, {headers: headers}).then(handlePexelsResponse).catch((error) => {
+            alert("not found, please try again");
+        })
     }
 
     function handleKeywordChange(event) {
         setKeyword(event.target.value);
     }
     
+    function handleSubmit(event) {
+        event.preventDefault();
+        search();
+    }
 
+    if (loaded) {
     return (
         <div className = "Dictionary">
                
-                    <form onSubmit = {search}>
+                    <form onSubmit = {handleSubmit}>
                             <input 
                             type = "search" 
                             text = "type a word then enter..."
                             autoFocus = {true} 
                             onChange = {handleKeywordChange}
+                            defaultValue = {props.defaultKeyword}
+                            placeholder="What word do you want to look up?"
                             />
                         
                     </form>
@@ -58,5 +70,8 @@ export default function Dictionary(props) {
                     <Photos photos = {photos}/>
         </div>
     );
-
+ } else {
+     load();
+     return "loading..."
+ }
 }

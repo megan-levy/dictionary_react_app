@@ -9,7 +9,7 @@ function App() {
         </header>
         <div className = "container">
           <main>
-            <Dictionary defaultKeyword= "diploma"/>
+            <Dictionary defaultKeyword = "diploma"/>
           </main>
         </div>
         <footer className = "App-footer">
